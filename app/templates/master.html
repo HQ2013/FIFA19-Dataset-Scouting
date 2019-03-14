@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>FIFA19 Scouting Dashboard</title>
+<!--import script files needed from plotly and bootstrap-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+<!--navbar links-->     
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+   <a class="navbar-brand" href="#">FIFA19 Scouting Dashboard</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" 
+  data-target="#navbarTogglerDemo02" 
+  aria-controls="navbarTogglerDemo02" aria-expanded="false" 
+  aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.udacity.com">Udacity</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.kaggle.com/karangadiya/fifa19">Kaggle: FIFA 19 complete player dataset</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!--middle section-->       
+<div class="row">
+
+    <!--social media buttons column-->      
+    <div class="col-1 border-right">
+        <div id="follow-me" class="mt-3">
+            <a href="https://www.linkedin.com/in/haiqingzhou/">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png" alt="linkedin" class="img-fluid mb-4 ml-2">
+            </a>
+            <a href="https://github.com/HQ2013">
+                <img src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="github" class="img-fluid ml-2">
+            </a>
+        </div>
+    </div>
+
+    <!--visualizations column-->        
+    <div class="col-11">
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="text-center">FIFA19 Scouting Project</h1>
+                <p class="text-center">Find Similar Players from FIFA19 Dataset</p>
+                <hr />
+      
+                <div align="center" class="row">
+                    <div class="col-lg-10 form-group-lg">
+                        <form action="/go" method="get">
+                            <input type="text" class="form-control form-control-lg" name="query" placeholder="Enter a message to classify">
+                            <div align="center" class="col-lg-offset-5">
+                                <button type="submit" class="btn btn-lg btn-success">Find Similar Players</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                {% block message %}
+                {% endblock %}
+            </div>
+        </div>
+      
+        <div class="container">
+            {% block content %}
+                <div class="page-header">
+                    <h1 class="text-center">Some data visualization base on FIFA 19 complete player dataset</h1>
+                </div>
+            {% endblock %}
+
+            {% for id in ids %}
+                <div id="{{id}}"></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!--footer section-->               
+<div id="footer" class="container"></div>
+</body>
+
+<script type="text/javascript">
+    const graphs = {{graphJSON | safe}};
+    const ids = {{ids | safe}};
+    for(let i in graphs) {
+        Plotly.plot(ids[i], graphs[i].data, graphs[i].layout);
+    }
+</script>
+</html>
