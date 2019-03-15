@@ -40,6 +40,7 @@ There are 1 notebooks available here to showcase work related to the above quest
     * templates/*.html: HTML templates for the web app.
     * run.py: Start the Python server for the web app and prepare visualizations.
 
+
 ### Instructions<a name="instructions"></a>
 1. Run the following commands in the project's root directory to set up your database and WebAPP.
 
@@ -64,10 +65,16 @@ The lower part of the page are some data visualization of the FIFA19 complete da
 ![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/datavisualization1.JPG)
 ![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/datavisualization2.JPG)
 ![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/datavisualization3.JPG)
+![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/datavisualization4.JPG)
+![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/datavisualization5.JPG)
 
 After fill in the template player name and click the button, the page returns four players that most similar to the template player.
-![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/findsimilarplayers.JPG)
+![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/findsimilarplayers1.JPG)
+![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/findsimilarplayers2.JPG)
+![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/findsimilarplayers3.JPG)
 
 ## Verification<a name="verification"></a>
 To verify the result: four similar players comparing to the provided template player, can use the function plot_radar() in notebook to generate the radar chart of the five players ( 1 template player + 4 similar players ). The radar chart shows that the returned list of players are very similar to the template players based on the six ability values considered.
-![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/verificationresults.JPG)
+![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/verificationresults1.JPG)
+![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/verificationresults2.JPG)
+![alt text](https://github.com/HQ2013/FIFA19-Dataset-Scouting/blob/master/screenshots/verificationresults3.JPG)

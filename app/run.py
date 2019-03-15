@@ -76,9 +76,9 @@ def most_similar(data, player, n=4):
     player_overall  = data.loc[data['Name']==player, 'Overall'].values[0]
     
     if player_position == "GK":
-        feature_to_compare = ['Overall', 'DIV', 'HAN', 'KIC', 'REF', 'SPD', 'POS']
+        feature_to_compare = ['DIV', 'HAN', 'KIC', 'REF', 'SPD', 'POS']
     else:
-        feature_to_compare = ['Overall', 'PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY']
+        feature_to_compare = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY']
     
     for candidate in data['Name']:
         if candidate != player:
@@ -154,8 +154,72 @@ def index():
                 'xaxis': { 'title': "Club" }
             }
         },
+
+        # Graph 5: Average value for each position
+        {
+            'data': [
+                Bar(
+                    x=cleaned_df.groupby("Position")["Value_Number_K"].mean().sort_values(ascending=False).to_frame().index,
+                    y=cleaned_df.groupby("Position")["Value_Number_K"].mean().sort_values(ascending=False).to_frame().Value_Number_K
+                )
+            ],
+
+            'layout': {
+                'title': 'Average value for each position',
+                'yaxis': { 'title': "Average value for each position (in thousands)" },
+                'xaxis': { 'title': "Position" }
+            }
+        },
+
+        # Graph 6: Average wage for each position
+        {
+            'data': [
+                Bar(
+                    x=cleaned_df.groupby("Position")["Wage_Number_K"].mean().sort_values(ascending=False).to_frame().index,
+                    y=cleaned_df.groupby("Position")["Wage_Number_K"].mean().sort_values(ascending=False).to_frame().Wage_Number_K
+                )
+            ],
+
+            'layout': {
+                'title': 'Average wage for each position',
+                'yaxis': { 'title': "Average wage for each position (in thousands)" },
+                'xaxis': { 'title': "Position" }
+            }
+        },
+
+        # Graph 7: Average value for each age
+        {
+            'data': [
+                Bar(
+                    x=cleaned_df.groupby("Age")["Value_Number_K"].mean().sort_values(ascending=False).to_frame().index,
+                    y=cleaned_df.groupby("Age")["Value_Number_K"].mean().sort_values(ascending=False).to_frame().Value_Number_K
+                )
+            ],
+
+            'layout': {
+                'title': 'Average value for each age',
+                'yaxis': { 'title': "Average value for each age (in thousands)" },
+                'xaxis': { 'title': "Age" }
+            }
+        },
+
+        # Graph 8: Average wage for each age
+        {
+            'data': [
+                Bar(
+                    x=cleaned_df.groupby("Age")["Wage_Number_K"].mean().sort_values(ascending=False).to_frame().index,
+                    y=cleaned_df.groupby("Age")["Wage_Number_K"].mean().sort_values(ascending=False).to_frame().Wage_Number_K
+                )
+            ],
+
+            'layout': {
+                'title': 'Average wage for each age',
+                'yaxis': { 'title': "Average wage for each Age (in thousands)" },
+                'xaxis': { 'title': "Age" }
+            }
+        },
         
-        # Graph 5: FIFA 19 dataset important feature correlation heatmap display
+        # Graph 9: FIFA 19 dataset important feature correlation heatmap display
         {
             'data': [
                 Heatmap(
