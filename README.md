@@ -14,6 +14,7 @@ A Udacity Data Scientist Nanodegree Capstone Project
 
 Beyond the Anaconda distribution of Python 3, the following packages need to be installed:
 * xgboost
+* bayesian-optimization
 
 ## Project Motivation<a name="motivation"></a>
 
